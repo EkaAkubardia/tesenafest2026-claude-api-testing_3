@@ -34,6 +34,8 @@ Spec files run only through the Playwright runner (not `ts-node`). Scripts in `s
 
 ## Writing tests
 
+For the full step-by-step recipe (probing the API, leftover check, PR), use the `writing-api-tests` skill in `.claude/skills/`.
+
 Pattern (see `tests/projects/create-project.spec.ts`):
 
 ```ts
