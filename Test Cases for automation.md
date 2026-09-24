@@ -21,6 +21,7 @@ A set for the Tesena Fest 2026 workshop, Todoist API.
 
 - TC-010 [E2E] A user creates a project, splits it into sections, adds a task with a due date to one of them, and finally ticks it off
 - TC-011 [E2E] A project from empty to done: three tasks, two ticked off, one still open at the end
+- TC-016 [E2E] A user creates a project, adds a task to it and schedules the task for a date
 
 ## Wave 4 - alternative scenarios
 
