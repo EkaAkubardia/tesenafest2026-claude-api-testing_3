@@ -1,0 +1,37 @@
+name: Issue priority label
+
+# Issue forms cannot set a label from a dropdown, so this reads the "Priority" answer
+# and sets the matching "priority: Px" label. The body is passed via env, never inlined in the script.
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Set priority label
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          # The form renders "### Priority", an empty line, then the selected option.
+          priority=$(printf '%s\n' "$ISSUE_BODY" \
+            | awk '/^### Priority/ { found = 1; next } found && NF { print; exit }' \
+            | grep -oE '^P[0-3]' || true)
+          if [ -z "$priority" ]; then
+            echo "No priority in the issue body, nothing to do."
+            exit 0
+          fi
+
+          remove=""
+          for p in P0 P1 P2 P3; do
+            [ "$p" != "$priority" ] && remove="${remove:+$remove,}priority: $p"
+          done
+          gh issue edit "$ISSUE_NUMBER" --add-label "priority: $priority" --remove-label "$remove"

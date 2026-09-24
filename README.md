@@ -73,6 +73,13 @@ test('TC-002 A new task is created with the text that was entered', {
 - `unauthenticatedApi` and `apiWithToken(token)` are for the negative auth tests.
 - `accountTimezone` (with `src/utils/dates.ts`) is the timezone for date assertions, not the runner's clock.
 
+## Issues and pull requests
+
+- New issues use a form: **Bug report**, **New test case** or **Improvement**. Blank issues are disabled.
+- Each form adds a `type:` label and `status: triage`. The **Priority** answer is turned into a `priority: P0`–`P3` label by `.github/workflows/issue-priority.yml`.
+- Labels are defined in `.github/labels.yml` and created by the **Sync labels** workflow (on push to `main`, or run it by hand).
+- PRs get a checklist from `.github/pull_request_template.md`. Link the issue with `Closes #<id>`.
+
 ## Security
 
 - The token lives only in `.env` (gitignored) and in the `TODOIST_API_TOKEN` GitHub secret.

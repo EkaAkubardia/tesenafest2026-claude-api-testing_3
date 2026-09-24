@@ -1,0 +1,61 @@
+# Source of truth for the repository labels. The "Sync labels" workflow creates or updates
+# them on push to main. Labels that are not listed here are not deleted.
+
+# Type
+- name: 'type: bug'
+  color: 'd73a4a'
+  description: Something does not work as expected
+- name: 'type: test-case'
+  color: '0e8a16'
+  description: New or changed automated test case
+- name: 'type: enhancement'
+  color: 'a2eeef'
+  description: Improvement to the framework, tooling or CI
+- name: 'type: flaky-test'
+  color: 'fbca04'
+  description: Test passes and fails without code changes
+- name: 'type: documentation'
+  color: '0075ca'
+  description: Docs only
+
+# Priority (added automatically from the issue form)
+- name: 'priority: P0'
+  color: 'b60205'
+  description: Critical - CI or the whole test run is blocked, fix now
+- name: 'priority: P1'
+  color: 'd93f0b'
+  description: High - important, no workaround, fix in the current iteration
+- name: 'priority: P2'
+  color: 'fbca04'
+  description: Medium - a workaround exists, plan it soon
+- name: 'priority: P3'
+  color: 'c2e0c6'
+  description: Low - minor, backlog
+
+# Status
+- name: 'status: triage'
+  color: 'ededed'
+  description: New, not reviewed yet
+- name: 'status: needs-info'
+  color: 'd876e3'
+  description: Waiting for more information from the author
+- name: 'status: blocked'
+  color: '000000'
+  description: Cannot continue because of another issue or external dependency
+- name: 'status: in-progress'
+  color: '1d76db'
+  description: Someone is working on it
+
+# Resolution / community
+- name: duplicate
+  color: 'cfd3d7'
+  description: This issue or pull request already exists
+- name: wontfix
+  color: 'ffffff'
+  description: This will not be worked on
+- name: good first issue
+  color: '7057ff'
+  description: Good for newcomers
+- name: help wanted
+  color: '008672'
+  description: Extra attention is needed

@@ -1,0 +1,60 @@
+name: Improvement / feature request
+description: Suggest an improvement to the test framework, CI, tooling or docs.
+title: '[Feature]: '
+labels: ['type: enhancement', 'status: triage']
+body:
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: The matching `priority:` label is added automatically.
+      options:
+        - P0 - Critical (blocks current work)
+        - P1 - High (needed soon)
+        - P2 - Medium (would help)
+        - P3 - Low (nice to have)
+      default: 2
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Test framework (clients, fixtures, data builders, schemas, reporters)
+        - CI / GitHub Actions
+        - Tooling (lint, format, git hooks, scripts)
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is hard or missing today? Why does it matter?
+      placeholder: 'Every negative test repeats the same status code assertions...'
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      placeholder: |
+        - [ ] ...
+        - [ ] README is updated

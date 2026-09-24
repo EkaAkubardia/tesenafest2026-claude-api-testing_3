@@ -1,0 +1,103 @@
+name: Bug report
+description: Something in the test framework, the tests or CI does not work as expected, or a test found a bug in the Todoist API.
+title: '[Bug]: '
+labels: ['type: bug', 'status: triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please search [existing issues](https://github.com/EkaAkubardia/tesenafest2026-claude-api-testing_3/issues?q=is%3Aissue) first.
+
+        > [!WARNING]
+        > **Never paste your `TODOIST_API_TOKEN`.** Check logs, traces and screenshots before you attach them. This repo is public.
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How urgent is it? The matching `priority:` label is added automatically.
+      options:
+        - P0 - Critical (CI or the whole test run is blocked for everyone)
+        - P1 - High (important tests fail or give wrong results, no workaround)
+        - P2 - Medium (a workaround exists)
+        - P3 - Low (minor, cosmetic)
+      default: 2
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where is the problem?
+      options:
+        - Test framework (clients, fixtures, data builders, schemas, reporters)
+        - Test cases (spec files)
+        - CI / GitHub Actions
+        - Todoist API (the application under test)
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: test-id
+    attributes:
+      label: Affected test case
+      description: Test case ID(s) or spec file, if any.
+      placeholder: 'TC-002, tests/tasks/create.spec.ts'
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear, short description of the bug.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Run `npx playwright test tests/tasks --grep @TC-002`
+        2. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / error output
+      description: Paste the relevant output. It is formatted as code automatically. **Remove the API token first.**
+      render: shell
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: '`TEST_ENV`, Node.js version, OS, local or CI (link to the run).'
+      placeholder: 'TEST_ENV=prod, Node 24.x, Windows 11, local'
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and this is not a duplicate.
+          required: true
+        - label: The report contains no API token or other secrets.
+          required: true
