@@ -1,0 +1,95 @@
+name: New test case
+description: Propose a new automated API test case or extend an existing one.
+title: '[Test]: '
+labels: ['type: test-case', 'status: triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the test so that someone else can automate it without asking questions.
+        See [Test Cases for automation.md](https://github.com/EkaAkubardia/tesenafest2026-claude-api-testing_3/blob/main/Test%20Cases%20for%20automation.md) for existing cases.
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: The matching `priority:` label is added automatically.
+      options:
+        - P0 - Critical (core flow, must be covered now)
+        - P1 - High (important coverage gap)
+        - P2 - Medium (nice to have soon)
+        - P3 - Low (edge case, backlog)
+      default: 2
+    validations:
+      required: true
+
+  - type: input
+    id: test-id
+    attributes:
+      label: Test case ID
+      description: Leave empty if the ID is not assigned yet.
+      placeholder: 'TC-042'
+
+  - type: dropdown
+    id: resource
+    attributes:
+      label: API resource
+      multiple: true
+      options:
+        - Projects
+        - Tasks
+        - Labels
+        - Comments
+        - User
+        - Authentication
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Test type
+      options:
+        - Positive (happy path)
+        - Negative (validation, error codes)
+        - Authentication / authorization
+        - Schema / contract
+        - End-to-end flow (several resources)
+    validations:
+      required: true
+
+  - type: textarea
+    id: preconditions
+    attributes:
+      label: Preconditions / test data
+      placeholder: 'A project with one task exists (created with testData.createProject / createTask).'
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps
+      placeholder: |
+        1. POST /tasks with content "autotest-..."
+        2. GET /tasks/{id}
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      description: Status codes, response fields, schema.
+      placeholder: |
+        - 200 OK
+        - Response matches the Task schema
+        - `content` equals the sent text
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: tags
+    attributes:
+      label: Tags
+      options:
+        - label: '`@smoke` - run it in the hourly smoke suite on main'
