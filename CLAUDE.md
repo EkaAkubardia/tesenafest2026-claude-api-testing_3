@@ -58,6 +58,7 @@ test(
 
 ## Git workflow
 
+- **Every new task starts on a new branch created from the latest `main`** (`git checkout main && git pull && git checkout -b <issue id>-<short-description>`). Never continue a new task on the previous task's branch.
 - Issue → branch `<issue id>-<short-description>` → PR. Commit messages must start with the issue id: `#12 Add tasks API client` (`commit-msg` hook; `core.commentChar` is `;` so `#` lines survive the editor). `pre-push` blocks pushes to `main`; `pre-commit` runs lint-staged.
 - Issues use the forms in `.github/ISSUE_TEMPLATE/`; labels are defined in `.github/labels.yml` (`type:`, `priority: P0–P3`, `status:`). `issue-priority.yml` sets the priority label from the form. PRs use `.github/pull_request_template.md` with `Closes #<id>`.
 - Per the brief, Claude does not merge PRs: it reviews its own PR, fixes the findings, and a human reviews and merges. Start the next issue from the updated `main`.
